@@ -12,7 +12,16 @@ const todosCollectionReducer = createReducer(adapter.getInitialState(), builder 
   builder.addCase(TodosCollectionActions.add, (state: IState, { payload }) =>
     adapter.addOne(state, payload)
   );
-  builder.addCase(TodosCollectionActions.remove, (state: IState, { payload }) => adapter.removeOne(state, payload.id));
+  builder.addCase(TodosCollectionActions.removeSingle, (state: IState, { payload }) => 
+    adapter.removeOne(state, payload.id)
+  );
+  builder.addCase(TodosCollectionActions.removeMany, (state: IState, { payload }) =>
+    adapter.removeMany(state, payload.ids)
+  );
+  builder.addCase(TodosCollectionActions.updateSingle, (state: IState, { payload }) =>
+    adapter.updateOne(state, {id: payload.id, changes: {...payload.todo}})
+  );
+
 });
 
 export default todosCollectionReducer;

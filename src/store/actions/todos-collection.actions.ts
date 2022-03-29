@@ -6,6 +6,10 @@ const featureKey = '[Todos Collection]'
 
 export const loadList = createAction(`${featureKey} Load List`);
 
-export const add = createAction<Todo>(`${featureKey} Add`);
+export const add = createAction<Todo>(`${featureKey} Add Single`);
 
-export const remove = createAction<{id: number}>(`${featureKey} Remove`);
+export const removeSingle = createAction<{id: string}>(`${featureKey} Remove Single`);
+
+export const updateSingle = createAction<{id: string, todo: Partial<Todo>}>(`${featureKey} Update Single`);
+
+export const removeMany = createAction<{ids: string[]}>(`${featureKey} Remove Many`)
