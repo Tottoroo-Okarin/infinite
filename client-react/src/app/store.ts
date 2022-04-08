@@ -1,5 +1,4 @@
 import { configureStore, ThunkAction, Action, combineReducers, getDefaultMiddleware } from '@reduxjs/toolkit';
-import todosCollectionReducer from '../store/reducers/todos-collection.reducer';
 import { dataReducer } from '../store/data-reducer';
 import storeLogger from './middlewares/store-logger';
 
