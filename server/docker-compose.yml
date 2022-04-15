@@ -1,0 +1,30 @@
+version: '3.4'
+
+services:
+  consul:
+    image: consul:latest
+    ports:
+      - "8500:8500"
+    hostname: consul
+    container_name: consul
+    
+  db:
+    container_name: pg_container
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_USER: todosuser
+      POSTGRES_PASSWORD: todosuserpass
+      POSTGRES_DB: todos
+    ports:
+      - "5432:5432"
+      
+  pgadmin:
+    container_name: pgadmin4_container
+    image: dpage/pgadmin4
+    restart: always
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@admin.com
+      PGADMIN_DEFAULT_PASSWORD: root
+    ports:
+      - "8080:8080"

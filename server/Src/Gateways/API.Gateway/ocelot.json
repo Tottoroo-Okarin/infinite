@@ -1,0 +1,22 @@
+﻿{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "Routes": [
+    {
+      "ServiceName": "todos",
+      "DownstreamPathTemplate": "/api/todos",
+      "DownstreamScheme": "http",
+      "UpstreamPathTemplate": "/api/todos",
+      "UpstreamHttpMethod": [ "GET", "POST" ],
+      "LoadBalancerOptions": {
+        "Type": "LeastConnection"
+      }
+    }
+  ],
+  "GlobalConfiguration": {
+    "ServiceDiscoveryProvider": {
+      "Host": "localhost",
+      "Port": 8500,
+      "Type": "Consul"
+    }
+  }
+}
