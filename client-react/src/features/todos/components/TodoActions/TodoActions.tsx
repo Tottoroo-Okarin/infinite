@@ -1,5 +1,5 @@
-import { Todo } from "../models/todo.model"
-import { TodoAction } from "../models/todoAction.model"
+import { Todo } from "../../models/todo.model"
+import { TodoAction } from "../../models/todoAction.model"
 
 
 interface TodoActionsProps {
