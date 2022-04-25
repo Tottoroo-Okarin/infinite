@@ -1,8 +1,5 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom"
-import { AppBar, Button, Drawer, IconButton, Toolbar, Typography } from "@mui/material"
-import Grid from "@mui/material/Grid"
+import { AppBar, Button, IconButton, Toolbar, Typography } from "@mui/material"
 import { Box } from "@mui/system"
-import BaseAppBar from "../../components/AppBar"
 import styles from "./Layout.module.scss"
 
 interface Props {
@@ -35,7 +32,6 @@ export const Layout = ({ children }: Props) => {
           { children }
         </Box>
       </div>
-      
     </div>   
   )
 }

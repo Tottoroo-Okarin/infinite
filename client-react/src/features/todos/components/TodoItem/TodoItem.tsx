@@ -15,7 +15,7 @@ export const TodoItem = ({todo, children}: TodoItemProps) => {
         <Typography variant="h4">
           {todo.title}
         </Typography>
-        <Typography>
+        <Typography paragraph>
           {todo.description}
         </Typography>
         <Typography className={todo.completed ? styles['todo__status__completed'] : styles['todo__status__in-progress']}>

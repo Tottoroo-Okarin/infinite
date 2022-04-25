@@ -1,11 +1,11 @@
 import { configureStore, ThunkAction, Action, combineReducers, getDefaultMiddleware } from '@reduxjs/toolkit';
-import { todosReducer } from '../features/todos/store';
+import { featuresReducer } from '../features/features-reducer';
 import { dataReducer } from '../store/data-reducer';
 import storeLogger from './middlewares/store-logger';
 
 const rootReducer = combineReducers({
   data: dataReducer,
-  todos: todosReducer
+  features: featuresReducer
 })
 
 

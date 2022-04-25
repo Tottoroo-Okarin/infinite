@@ -1,7 +1,7 @@
 import { Todo } from '../../models/todo.model';
 import { TodoAction } from '../../models/todoAction.model';
 import { TodoItem } from '../TodoItem/TodoItem';
-import { Box, Button, Grid } from '@mui/material';
+import { Box, Button } from '@mui/material';
 
 interface TodoListProps {
   todos: Array<Todo>,
