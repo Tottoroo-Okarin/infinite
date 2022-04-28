@@ -1,10 +1,21 @@
 .todo {
     &__status {
-        &__completed {
-            color: green
+        height: 100%;
+        padding:3px;
+        &-completed {
+            background-color: green
         }
-        &__in-progress {
-            color: crimson
+        &-in-progress {
+            background-color: crimson
+        }
+    }
+    &-content {
+        display: flex;
+        justify-content: start;
+        &__text-block {
+            display: flex;
+            flex-direction: column;
+            flex: 1
         }
     }
 }

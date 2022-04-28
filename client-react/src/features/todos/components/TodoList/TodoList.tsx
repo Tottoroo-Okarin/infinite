@@ -2,14 +2,18 @@ import { Todo } from '../../models/todo.model';
 import { TodoAction } from '../../models/todoAction.model';
 import { TodoItem } from '../TodoItem/TodoItem';
 import { Box, Button } from '@mui/material';
+import { ActionTypes } from '@mui/base';
+import { TodoActions } from '../TodoActions/TodoActions';
+import { TodoModal } from '../TodoModal/TodoModal';
+import { useAppSelector } from '../../../../app/hooks';
+import { TodoSelectors } from '../../store/selector';
 
 interface TodoListProps {
   todos: Array<Todo>,
-  todoActions?: Array<TodoAction>
 }
 
 
-export const TodoList = ({todos, todoActions}: TodoListProps) => {
+export const TodoList = ({todos}: TodoListProps) => {
   return(
     <Box
       sx={{
@@ -20,21 +24,11 @@ export const TodoList = ({todos, todoActions}: TodoListProps) => {
     >
       {todos.map(todo => {
         return (
-            <TodoItem todo={todo}>
-            { //slot with todo-specific actions
-              (todoActions) &&
-                (todoActions.map(entry => {
-                  return (
-                    <Button onClick={() => entry.action(todo)}>
-                      {todo.completed ? 'Set In Progress' : 'Set Completed'}
-                    </Button>
-                  )
-                })
-              )
-            }
+          <TodoItem todo={todo}>
+            <TodoActions todo={todo}/>
           </TodoItem>
         )
       })}
-    </Box>
+    </Box> 
   )
 }

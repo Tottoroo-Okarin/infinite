@@ -1,18 +1,23 @@
 import { createReducer } from "@reduxjs/toolkit";
+import { Todo } from "../../models/todo.model";
 import { TodoModalsActions } from "../actions";
 
-const initialState = {
-  isModalCardAddOpen: false,
-  editedTodoId: ''
+interface State {
+  isModalCardOpen: boolean,
+  todoBeingEdited?: Todo
+}
+
+const initialState: State = {
+  isModalCardOpen: false,
+  todoBeingEdited: undefined
 } 
 
-const todoModalsReducer = createReducer(initialState, (builder) => {
-  builder.addCase(TodoModalsActions.openAddTodoModal, (state) => {
-    state.isModalCardAddOpen = true
-  });
-  builder.addCase(TodoModalsActions.closeAddTodoModal, (state) => {
-    state.isModalCardAddOpen = false
-  })
+const todoModalsReducer = createReducer<State>(initialState, (builder) => {
+  builder
+    .addCase(TodoModalsActions.openTodoModal, (state, { payload }) => 
+      ({...state, isModalCardOpen: true, todoBeingEdited: payload}))
+    .addCase(TodoModalsActions.closeTodoModal, (state) => 
+      ({...state, isModalCardOpen: false, todoBeingEdited: undefined}))
 });
 
 export default todoModalsReducer;
