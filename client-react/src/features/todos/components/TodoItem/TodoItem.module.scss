@@ -1,0 +1,10 @@
+.todo {
+    &__status {
+        &__completed {
+            color: green
+        }
+        &__in-progress {
+            color: crimson
+        }
+    }
+}
