@@ -10,11 +10,8 @@ interface TodoItemProps {
 export const TodoItem = ({todo, children}: TodoItemProps) => {
   return (
     <>
-    <Card>
+    <Card sx={{borderRadius: 0}} className={todo.completed ? styles['todo__status-completed'] : styles['todo__status-in-progress']}>
       <CardContent className={styles['todo__content']}>
-        <div className={todo.completed ? styles['todo__status-completed'] : styles['todo__status-in-progress']}>
-
-        </div>
         <div className={styles['todo__text-block']}>
           <Typography variant="h4">
             {todo.title}

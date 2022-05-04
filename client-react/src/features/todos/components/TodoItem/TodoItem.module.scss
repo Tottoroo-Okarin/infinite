@@ -1,17 +1,14 @@
 .todo {
     &__status {
-        height: 100%;
-        padding:3px;
         &-completed {
-            background-color: green
+            border-left: 3px solid green;
         }
         &-in-progress {
-            background-color: crimson
+            border-left: 3px solid crimson;
         }
     }
-    &-content {
+    &__content {
         display: flex;
-        justify-content: start;
         &__text-block {
             display: flex;
             flex-direction: column;

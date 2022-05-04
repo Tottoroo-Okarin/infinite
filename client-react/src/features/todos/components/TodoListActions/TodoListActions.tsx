@@ -17,7 +17,6 @@ export const TodoListActions = ({clearCompletedTodos}: TodoListActionsProps) => 
   const isOpen = useAppSelector(TodoSelectors.isOpen)
 
   const openModal = () => {
-    debugger;
     dispatch(TodoModalsActions.openTodoModal())
   }
 
