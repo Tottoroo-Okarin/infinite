@@ -2,7 +2,7 @@ import { Button, Box, Modal, TextField, Typography } from "@mui/material"
 import { useForm } from "react-hook-form";
 import { useAppDispatch, useAppSelector } from "../../../../app/hooks";
 import { TodosCollectionActions } from "../../../../store/actions";
-import { TodoInputs } from "../../models/todoInputs.model";
+import { TodoInputs } from "../../models/todo-inputs.model";
 import { TodoModalsActions } from "../../store/actions";
 import { v4 as uuidv4 } from 'uuid';
 import styles from "./TodoModal.module.scss"
@@ -13,6 +13,11 @@ import { useEffect } from "react";
 
 interface TodoModalProps {
   isOpen: boolean,
+}
+
+const clearFormState: TodoInputs = {
+  title: '',
+  description: ''
 }
 
 const style = {
@@ -30,11 +35,6 @@ export const TodoModal = ({isOpen}: TodoModalProps) => {
   const todoBeingEdited = useAppSelector(TodoSelectors.todoBeingEdited)
   const { register, handleSubmit, reset, formState: { errors } } = useForm<TodoInputs>();
   const dispatch = useAppDispatch()
-
-  const clearFormState: TodoInputs = {
-    title: '',
-    description: ''
-  }
 
   useEffect(() => {
     reset(todoBeingEdited ? { title: todoBeingEdited.title, description: todoBeingEdited.description} : clearFormState);

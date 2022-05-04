@@ -1,4 +1,4 @@
-import * as TodoSelectors from './todoModals.selector'
+import * as TodoSelectors from './todo-modals.selector'
 
 
 export { TodoSelectors }

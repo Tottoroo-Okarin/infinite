@@ -1,5 +1,5 @@
 import { Todo } from '../../models/todo.model';
-import { TodoAction } from '../../models/todoAction.model';
+import { TodoAction } from '../../models/todo-action.model';
 import { TodoItem } from '../TodoItem/TodoItem';
 import { Box, Button } from '@mui/material';
 import { ActionTypes } from '@mui/base';
