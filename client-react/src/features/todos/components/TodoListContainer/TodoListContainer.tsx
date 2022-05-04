@@ -1,13 +1,9 @@
 import { useAppDispatch, useAppSelector } from "../../../../app/hooks"
 import { TodosCollectionActions } from "../../../../store/actions"
 import { TodosCollectionSelectors } from "../../../../store/selectors"
-import { Todo } from "../../models/todo.model"
-import { TodoAction } from "../../models/todoAction.model"
 import { TodoList } from "../TodoList/TodoList"
-import { v4 as uuidv4 } from 'uuid';
 import { TodoListActions } from "../TodoListActions/TodoListActions"
 import { Box } from "@mui/system"
-import { TodoModalsActions } from "../../store/actions"
 import { TodoSelectors } from "../../store/selector"
 import { TodoModal } from "../TodoModal/TodoModal"
 

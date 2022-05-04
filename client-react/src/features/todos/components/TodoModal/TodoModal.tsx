@@ -2,7 +2,6 @@ import { Button, Box, Modal, TextField, Typography } from "@mui/material"
 import { useForm } from "react-hook-form";
 import { useAppDispatch, useAppSelector } from "../../../../app/hooks";
 import { TodosCollectionActions } from "../../../../store/actions";
-import { Todo } from "../../models/todo.model";
 import { TodoInputs } from "../../models/todoInputs.model";
 import { TodoModalsActions } from "../../store/actions";
 import { v4 as uuidv4 } from 'uuid';

@@ -1,12 +1,8 @@
 import { Button } from "@mui/material"
-import { useAppDispatch, useAppSelector } from "../../../../app/hooks"
+import { useAppDispatch } from "../../../../app/hooks"
 import { TodosCollectionActions } from "../../../../store/actions"
 import { Todo } from "../../models/todo.model"
-import { TodoAction } from "../../models/todoAction.model"
 import { TodoModalsActions } from "../../store/actions"
-import { TodoSelectors } from "../../store/selector"
-import { TodoModal } from "../TodoModal/TodoModal"
-
 
 interface TodoActionsProps {
   todo: Todo,
