@@ -1,3 +1,3 @@
-import * as TodoModalsActions from './todoModals.actions'
+import * as TodoModalsActions from './todo-modals.actions'
 
 export { TodoModalsActions }

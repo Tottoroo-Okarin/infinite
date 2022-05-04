@@ -10,17 +10,19 @@ interface TodoItemProps {
 export const TodoItem = ({todo, children}: TodoItemProps) => {
   return (
     <>
-    <Card>
-      <CardContent>
-        <Typography variant="h4">
-          {todo.title}
-        </Typography>
-        <Typography paragraph>
-          {todo.description}
-        </Typography>
-        <Typography className={todo.completed ? styles['todo__status__completed'] : styles['todo__status__in-progress']}>
-          {todo.completed ? 'Completed' : 'In Progress'}
-        </Typography>
+    <Card sx={{borderRadius: 0}} className={todo.completed ? styles['todo__status-completed'] : styles['todo__status-in-progress']}>
+      <CardContent className={styles['todo__content']}>
+        <div className={styles['todo__text-block']}>
+          <Typography variant="h4">
+            {todo.title}
+          </Typography>
+          <Typography paragraph>
+            {todo.description}
+          </Typography>
+          <Typography>
+            {todo.completed ? 'Completed' : 'In Progress'}
+          </Typography>
+        </div>
       </CardContent>
       <CardActions>
         {children}
