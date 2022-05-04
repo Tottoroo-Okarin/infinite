@@ -20,12 +20,12 @@ export const TodoList = ({todos, todoActions}: TodoListProps) => {
     >
       {todos.map(todo => {
         return (
-            <TodoItem todo={todo}>
+            <TodoItem todo={todo} key={todo.id}>
             { //slot with todo-specific actions
               (todoActions) &&
                 (todoActions.map(entry => {
                   return (
-                    <Button onClick={() => entry.action(todo)}>
+                    <Button onClick={() => entry.action(todo)} key={entry.title}>
                       {todo.completed ? 'Set In Progress' : 'Set Completed'}
                     </Button>
                   )
