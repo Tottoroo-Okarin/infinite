@@ -28,3 +28,17 @@ services:
       PGADMIN_DEFAULT_PASSWORD: root
     ports:
       - "8080:8080"
+      
+  apigateway:
+    image: ${DOCKER_REGISTRY-}apigateway
+    build:
+      context: .
+      dockerfile: Src/Gateways/API.Gateway/Dockerfile
+      
+  todos.api:
+    image: ${DOCKER_REGISTRY-}todosgapi
+    build:
+      context: .
+      dockerfile: Src/Services/TodosService/Dockerfile
+    depends_on:
+      - consul
