@@ -1,13 +1,6 @@
 version: '3.4'
 
 services:
-  consul:
-    image: consul:latest
-    ports:
-      - "8500:8500"
-    hostname: consul
-    container_name: consul
-    
   db:
     container_name: pg_container
     image: postgres
@@ -18,6 +11,8 @@ services:
       POSTGRES_DB: todos
     ports:
       - "5432:5432"
+    networks:
+      - backend_network
       
   pgadmin:
     container_name: pgadmin4_container
@@ -28,17 +23,36 @@ services:
       PGADMIN_DEFAULT_PASSWORD: root
     ports:
       - "8080:8080"
-      
-  apigateway:
-    image: ${DOCKER_REGISTRY-}apigateway
-    build:
-      context: .
-      dockerfile: Src/Gateways/API.Gateway/Dockerfile
-      
-  todos.api:
-    image: ${DOCKER_REGISTRY-}todosgapi
+    networks:
+      - backend_network
+
+  todos:
+    image: todos:latest
     build:
       context: .
       dockerfile: Src/Services/TodosService/Dockerfile
+    container_name: todos
     depends_on:
       - consul
+    networks:
+      - backend_network
+
+  api.gateway:
+    image: apigateway:latest
+    build:
+      context: .
+      dockerfile: Src/Gateways/API.Gateway/Dockerfile
+    container_name: apigateway
+    networks:
+      - backend_network
+
+  consul:
+    image: consul:latest
+    command: consul agent -dev -log-level=warn -ui -client=0.0.0.0
+    hostname: consul
+    container_name: consul
+    networks:
+      - backend_network
+    
+networks:
+    backend_network:

@@ -1,0 +1,10 @@
+﻿{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "GlobalConfiguration": {
+    "ServiceDiscoveryProvider": {
+      "Host": "consul",
+      "Port": 8500,
+      "Type": "Consul"
+    }
+  }
+}

@@ -1,6 +1,21 @@
 version: '3.4'
 
 services:
-  apigateway:
+  todos:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ServiceConfig__serviceDiscoveryAddress=http://consul:8500
+      - ServiceConfig__serviceName=todos
+      - ServiceConfig__serviceId=todos-v1
     ports:
-      - "5000:80"
+      - "80"
+
+  api.gateway:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Docker
+    ports:
+      - "80:80"
+
+  consul:
+    ports:
+    - "8500:8500"

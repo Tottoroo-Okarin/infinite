@@ -16,7 +16,8 @@ namespace API.Gateway
                     config.SetBasePath(context.HostingEnvironment.ContentRootPath)
                         .AddJsonFile("appsettings.json", true, true)
                         .AddJsonFile($"appsettings.{context.HostingEnvironment.EnvironmentName}.json", true, true)
-                        .AddJsonFile("ocelot.json")
+                        .AddJsonFile("ocelot.json", optional: false, reloadOnChange: false)
+                        .AddJsonFile($"ocelot.{context.HostingEnvironment.EnvironmentName}.json", optional: true)
                         .AddEnvironmentVariables();
                 })
                 .ConfigureServices(services =>
