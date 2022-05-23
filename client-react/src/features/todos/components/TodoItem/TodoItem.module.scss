@@ -1,15 +1,18 @@
 .todo {
-    &__status {
-        &-completed {
+    overflow-y: scroll;
+    max-width: 400px;
+    max-height: 300px;
+    &Status {
+        &Completed {
             border-left: 3px solid green;
         }
-        &-in-progress {
+        &InProgress {
             border-left: 3px solid crimson;
         }
     }
-    &__content {
+    &Content {
         display: flex;
-        &__text-block {
+        &TextBlock {
             display: flex;
             flex-direction: column;
             flex: 1

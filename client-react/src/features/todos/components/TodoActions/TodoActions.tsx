@@ -21,7 +21,7 @@ export const TodoActions = ({todo}: TodoActionsProps) => {
   }
 
   const openTodoDetailsPage = (id: string) => {
-    dispatch(push('/details'))
+    dispatch(push(`/details/${id}`))
   }
 
   const isEditTodoDisabled = false;

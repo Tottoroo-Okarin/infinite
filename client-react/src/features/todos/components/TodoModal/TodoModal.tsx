@@ -8,6 +8,7 @@ import { v4 as uuidv4 } from 'uuid';
 import styles from "./TodoModal.module.scss"
 import { TodoSelectors } from "../../store/selector";
 import { useEffect } from "react";
+import classNames from "classnames/bind";
 
 
 
@@ -17,7 +18,9 @@ interface TodoModalProps {
 
 const clearFormState: TodoInputs = {
   title: '',
-  description: ''
+  description: '',
+  estimate: null,
+  assigneeId: ''
 }
 
 const style = {
@@ -31,7 +34,22 @@ const style = {
   p: 4,
 };
 
+const classes = classNames.bind(styles)
+
 export const TodoModal = ({isOpen}: TodoModalProps) => {
+
+  const formStyles = classes({
+    form: true
+  })
+
+  const textFieldStyles = classes({
+    textField: true
+  })
+
+  const validationStyles = classes({
+    validationError: true
+  })
+
   const todoBeingEdited = useAppSelector(TodoSelectors.todoBeingEdited)
   const { register, handleSubmit, reset, formState: { errors } } = useForm<TodoInputs>();
   const dispatch = useAppDispatch()
@@ -44,8 +62,12 @@ export const TodoModal = ({isOpen}: TodoModalProps) => {
     dispatch(TodoModalsActions.closeTodoModal())
   } 
   
-  const addTodo = (title: string, description: string) => {
-    dispatch(TodosCollectionActions.add({ id: uuidv4(), title: title, description: description, completed: false }))
+  const addTodo = (title: string, description: string, estimate: number, assigneeId: string) => {
+    dispatch(TodosCollectionActions.add(
+      { id: uuidv4(), title: title, description: description,
+        completed: false, estimate: estimate, assignedById: 'My id', assigneeId: assigneeId,
+        assignedOn: 'Monday, April 23rd, 2022',  lastUpdatedOn: 'now', comments: []
+      }))
     closeModal();
   }
   
@@ -55,7 +77,7 @@ export const TodoModal = ({isOpen}: TodoModalProps) => {
   }
   
   const handleAddTodo = (data: TodoInputs) => {
-    addTodo(data.title, data.description);
+    addTodo(data.title, data.description, +data.estimate!, data.assigneeId);
   }
 
   const handleEditTodo = (data: TodoInputs) => {
@@ -75,25 +97,39 @@ export const TodoModal = ({isOpen}: TodoModalProps) => {
     <>
       <Modal open={isOpen}>
         <Box sx={style}>
-          <form className={styles['form']} onSubmit={handleSubmit(onClickSubmit)}>
+          <form className={formStyles} onSubmit={handleSubmit(onClickSubmit)}>
             <Typography id="modal-modal-title" variant="h6">
               {header}
             </Typography>
             <TextField 
-              className={styles['text-field']} 
+              className={textFieldStyles} 
               label="Name"  
               variant="standard" 
               {...register("title", { required: true })}
             />
-            {errors.title && <span className={styles['validation-error']}>This field is required</span>}
+            {errors.title && <span className={validationStyles}>This field is required</span>}
             <TextField 
-              className={styles['text-field']} 
+              className={textFieldStyles} 
               label="Description" 
               variant="standard" 
               multiline maxRows={4} 
               {...register("description", { required: true })}
             />  
-            {errors.description && <span className={styles['validation-error']}>This field is required</span>}
+            {errors.description && <span className={validationStyles}>This field is required</span>}
+            <TextField 
+              className={textFieldStyles} 
+              label="Estimate"  
+              variant="standard" 
+              {...register("estimate", { required: true })}
+            />
+            {errors.title && <span className={validationStyles}>This field is required</span>}
+            <TextField 
+              className={textFieldStyles} 
+              label="Assignee"  
+              variant="standard" 
+              {...register("assigneeId", { required: true })}
+            />
+            {errors.title && <span className={validationStyles}>This field is required</span>}
             <div>
               <Button type="submit">
                 {submitButtonTitle}

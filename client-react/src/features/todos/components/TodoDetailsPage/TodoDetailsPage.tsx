@@ -1,6 +1,7 @@
+import { TodoDetailsContainer } from "../TodoDetailsContainer/TodoDetailsContainer"
 
 export const TodoDetailsPage = () => {
   return (
-    <div> TodoDetailsPage </div>
+    <TodoDetailsContainer containerOptions={{hasActions: false}}/>
   )
 }

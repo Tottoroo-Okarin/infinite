@@ -1,0 +1,18 @@
+.header {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    width: 100%;
+    flex-wrap: wrap;
+    border-bottom: 2px solid rgb(242, 243, 243);
+
+    &Title {
+        margin-right: 10px !important;
+        padding: 10px;
+    }
+
+    &Status {
+        margin-left: 10px !important;
+        padding: 10px 0 10px 0;
+    }
+}
