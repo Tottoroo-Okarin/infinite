@@ -64,15 +64,15 @@ export const TodoModal = ({isOpen}: TodoModalProps) => {
   
   const addTodo = (title: string, description: string, estimate: number, assigneeId: string) => {
     dispatch(TodosCollectionActions.add(
-      { id: uuidv4(), title: title, description: description,
-        completed: false, estimate: estimate, assignedById: 'My id', assigneeId: assigneeId,
+      { id: uuidv4(), title, description,
+        completed: false, estimate, assignedById: 'My id', assigneeId,
         assignedOn: 'Monday, April 23rd, 2022',  lastUpdatedOn: 'now', comments: []
       }))
     closeModal();
   }
   
   const editTodo = (id: string, title: string, description: string) => {
-    dispatch(TodosCollectionActions.updateSingle({id, todo: {title: title, description: description}}))
+    dispatch(TodosCollectionActions.updateSingle({id, todo: {title, description}}))
     closeModal();
   }
   

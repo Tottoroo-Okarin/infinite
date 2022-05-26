@@ -3,6 +3,7 @@ import {
   BrowserRouter,
   Switch,
   Route,
+  Redirect,
 } from "react-router-dom";
 import styles from './App.module.scss'
 import { Layout } from './features/layout/Layout';
@@ -21,8 +22,11 @@ function App() {
     <div className={appStyles}>
       <Layout>
         <Switch>
-          <Route exact path="/" component={TodoListPage} />
-          <Route path="/details/:id" component={TodoDetailsPage} />
+          <Route exact path="/">
+            <Redirect to="/todos"/>
+          </Route>
+          <Route exact path="/todos" component={TodoListPage} />
+          <Route path="/todos/details/:id" component={TodoDetailsPage} />
         </Switch>
       </Layout>
     </div>

@@ -11,6 +11,7 @@ import { TodoDetailsMetaInfo } from "../TodoDetailsMetaInfo/TodoDetailsMetaInfo"
 import { TodoDetailsComments } from "../TodoDetailsComments/TodoDetailsComments"
 import { TodoDetailsAttachments } from "../TodoDetailsAttachments/TodoDetailsAttachments"
 import { TodoDetailsDescription } from "../TodoDetailsDescription/TodoDetailsDescription"
+import { Error } from "../Error/Error"
 
 interface TodoDetailsContainerOptions {
   hasActions?: boolean,
@@ -107,7 +108,7 @@ export const TodoDetailsContainer = ({containerOptions}: TodoDetailsContainerPro
       </Card>
     )} else {
       return(
-        <h3>RIP</h3>
+        <Error/>
       )
     }
 }
