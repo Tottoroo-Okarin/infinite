@@ -1,11 +1,13 @@
-.modal-box {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 400px;
-    background-color: white;
-    padding: 30px;
+.modal {
+    &Box {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 400px;
+        background-color: white;
+        padding: 30px;
+    }
 }
 
 .form {
@@ -14,11 +16,13 @@
     justify-content: space-between;
 }
 
-.validation-error {
-    color:crimson
+.validation {
+    &Error {
+        color:crimson
+    }
 }
 
-.text-field {
+.textField {
     margin-top: 12px;
     margin-bottom: 12px;
 }

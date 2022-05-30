@@ -29,7 +29,7 @@ export const TodoListContainer = ({containerOptions}: TodoListContainerProps) =>
   }
 
   return (
-    <Box alignItems="center" sx={{width: 900}}>
+    <Box>
       <TodoList todos={todos}/>
       {(containerOptions.hasActions) && (
         <TodoListActions clearCompletedTodos={clearCompletedTodos}/>
