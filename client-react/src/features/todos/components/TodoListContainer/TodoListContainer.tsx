@@ -1,6 +1,6 @@
 import { useAppDispatch, useAppSelector } from "../../../../app/hooks"
 import { TodosCollectionActions } from "../../../../store/actions"
-import { TodosCollectionSelectors } from "../../../../store/selectors"
+import { TodosCollectionSelectors, UsersCollectionSelectors } from "../../../../store/selectors"
 import { TodoList } from "../TodoList/TodoList"
 import { TodoListActions } from "../TodoListActions/TodoListActions"
 import { Box } from "@mui/system"
@@ -19,7 +19,9 @@ interface TodoListContainerProps {
 
 export const TodoListContainer = ({containerOptions}: TodoListContainerProps) => {
   const dispatch = useAppDispatch()
+
   const todos = useAppSelector(TodosCollectionSelectors.getAllTodos)
+  const users = useAppSelector(UsersCollectionSelectors.getAllUsers)
   const isOpen = useAppSelector(TodoSelectors.isOpen)
 
   const clearCompletedTodos = () => {

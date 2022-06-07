@@ -1,4 +1,4 @@
-import { Button, Box, Modal, TextField, Typography } from "@mui/material"
+import { Button, Box, Modal, TextField, Typography, Select, MenuItem, InputLabel, FormControl } from "@mui/material"
 import { useForm } from "react-hook-form";
 import { useAppDispatch, useAppSelector } from "../../../../app/hooks";
 import { TodosCollectionActions } from "../../../../store/actions";
@@ -9,6 +9,7 @@ import styles from "./TodoModal.module.scss"
 import { TodoSelectors } from "../../store/selector";
 import { useEffect } from "react";
 import classNames from "classnames/bind";
+import { UsersCollectionSelectors } from "../../../../store/selectors";
 
 
 
@@ -51,6 +52,7 @@ export const TodoModal = ({isOpen}: TodoModalProps) => {
   })
 
   const todoBeingEdited = useAppSelector(TodoSelectors.todoBeingEdited)
+  const users = useAppSelector(UsersCollectionSelectors.getAllUsers)
   const { register, handleSubmit, reset, formState: { errors } } = useForm<TodoInputs>();
   const dispatch = useAppDispatch()
 
@@ -123,13 +125,30 @@ export const TodoModal = ({isOpen}: TodoModalProps) => {
               {...register("estimate", { required: true })}
             />
             {errors.title && <span className={validationStyles}>This field is required</span>}
-            <TextField 
-              className={textFieldStyles} 
-              label="Assignee"  
-              variant="standard" 
-              {...register("assigneeId", { required: true })}
-            />
-            {errors.title && <span className={validationStyles}>This field is required</span>}
+            <FormControl>
+              <InputLabel id="label">Assignee</InputLabel>
+              <Select
+                className={textFieldStyles}
+                labelId="label"
+                {...register("assigneeId")}
+              >
+                {
+                  (users.length === 0) &&
+                    <MenuItem value={''}>
+                      No data available
+                    </MenuItem>
+                }
+                {
+                  users.map(user => {
+                    return(
+                      <MenuItem value={user.id} key={user.id}>
+                        {`${user.lastName} ${user.firstName}, ${user.position}`}
+                      </MenuItem>
+                    )
+                  })
+                }
+              </Select>
+            </FormControl>
             <div>
               <Button type="submit">
                 {submitButtonTitle}
