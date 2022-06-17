@@ -1,5 +1,4 @@
-import { AppBar, Button, IconButton, Toolbar, Typography } from "@mui/material"
-import { Box } from "@mui/system"
+import { AppBar, Button, Toolbar, Typography } from "@mui/material"
 import styles from "./Layout.module.scss"
 
 interface Props {

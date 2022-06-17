@@ -1,4 +1,4 @@
-import { Todo } from "../../models/todo.model";
+import { Todo } from "@features/todos/models";
 import classNames from 'classnames/bind';
 import styles from './TodoDetailsMetaInfo.module.scss' 
 

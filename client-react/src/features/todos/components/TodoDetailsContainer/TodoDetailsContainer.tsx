@@ -1,17 +1,18 @@
-import { Box, Card } from "@mui/material"
+import { Card } from "@mui/material"
 import { useParams } from "react-router-dom"
-import { useAppSelector } from "../../../../app/hooks"
-import { TodosCollectionSelectors } from "../../../../store/selectors"
-import { Todo } from "../../models/todo.model"
-import { User } from "../../models/user.model"
-import { TodoDetailsHeader } from "../TodoDetailsHeader/TodoDetailsHeader"
+import { useAppSelector } from "@/app/hooks"
+import { TodosCollectionSelectors } from "@/store/selectors"
+import { Todo, User } from "@features/todos/models"
 import classNames from 'classnames/bind';
 import styles from './TodoDetailsContainer.module.scss' 
-import { TodoDetailsMetaInfo } from "../TodoDetailsMetaInfo/TodoDetailsMetaInfo"
-import { TodoDetailsComments } from "../TodoDetailsComments/TodoDetailsComments"
-import { TodoDetailsAttachments } from "../TodoDetailsAttachments/TodoDetailsAttachments"
-import { TodoDetailsDescription } from "../TodoDetailsDescription/TodoDetailsDescription"
-import { Error } from "../Error/Error"
+import { 
+  TodoDetailsMetaInfo,
+  TodoDetailsComments,
+  TodoDetailsAttachments,
+  TodoDetailsDescription,
+  TodoDetailsHeader,
+} from "@features/todos/components"
+import { Error } from "@/components"
 
 interface TodoDetailsContainerOptions {
   hasActions?: boolean,

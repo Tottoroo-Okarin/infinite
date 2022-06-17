@@ -1,6 +1,6 @@
 import { Card, CardActions, CardContent, Typography } from '@mui/material';
 import classNames from 'classnames/bind';
-import { Todo } from '../../models/todo.model';
+import { Todo } from '@features/todos/models';
 import styles from './TodoItem.module.scss' 
 
 interface TodoItemProps {

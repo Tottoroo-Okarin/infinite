@@ -1,5 +1,5 @@
 import { createEntityAdapter, createReducer, EntityState } from "@reduxjs/toolkit";
-import { Todo } from "../../features/todos/models/todo.model";
+import { Todo } from "@features/todos/models";
 import { TodosCollectionActions } from "../actions";
 
 interface IState extends EntityState<Todo> {}
@@ -22,24 +22,24 @@ const initialStateMockup = {
   ids: ['test-todo-id']
 }
 
-export const adapter = createEntityAdapter<Todo>({
+const todosCollectionAdapter = createEntityAdapter<Todo>({
   selectId: todo => todo.id,
 });
 
-const todosCollectionReducer = createReducer(adapter.getInitialState(), builder => {
+const todosCollectionReducer = createReducer(todosCollectionAdapter.getInitialState(), builder => {
   builder.addCase(TodosCollectionActions.add, (state: IState, { payload }) =>
-    adapter.addOne(state, payload)
+    todosCollectionAdapter.addOne(state, payload)
   );
   builder.addCase(TodosCollectionActions.removeSingle, (state: IState, { payload }) => 
-    adapter.removeOne(state, payload.id)
+    todosCollectionAdapter.removeOne(state, payload.id)
   );
   builder.addCase(TodosCollectionActions.removeMany, (state: IState, { payload }) =>
-    adapter.removeMany(state, payload.ids)
+    todosCollectionAdapter.removeMany(state, payload.ids)
   );
   builder.addCase(TodosCollectionActions.updateSingle, (state: IState, { payload }) =>
-    adapter.updateOne(state, {id: payload.id, changes: {...payload.todo}})
+    todosCollectionAdapter.updateOne(state, {id: payload.id, changes: {...payload.todo}})
   );
 
 });
 
-export default todosCollectionReducer;
+export { todosCollectionReducer, todosCollectionAdapter };

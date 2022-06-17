@@ -1,7 +1,7 @@
-import { Todo } from "../../models/todo.model";
+import { Todo } from "@features/todos/models";
 import classNames from 'classnames/bind';
 import styles from './TodoDetailsHeader.module.scss' 
-import { Divider, Typography } from "@mui/material";
+import { Typography } from "@mui/material";
 
 interface TodoDetailsHeaderProps {
   todo?: Todo,

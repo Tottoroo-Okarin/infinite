@@ -1,4 +1,4 @@
-import { TodoListContainer } from "../TodoListContainer/TodoListContainer"
+import { TodoListContainer } from "@features/todos/components"
 
 export const TodoListPage = () => {
   return (

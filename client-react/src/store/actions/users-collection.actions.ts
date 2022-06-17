@@ -1,5 +1,5 @@
 import { createAction } from "@reduxjs/toolkit";
-import { User } from "../../features/todos/models/user.model";
+import { User } from "@features/todos/models";
 
 
 const featureKey = '[Users Collection]'
