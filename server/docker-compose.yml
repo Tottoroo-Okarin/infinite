@@ -30,6 +30,7 @@ services:
       dockerfile: Src/Services/TodosService/Dockerfile
     depends_on:
       - consul
+      - todosdb
     networks:
       - backend_network
 
