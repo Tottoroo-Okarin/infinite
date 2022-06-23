@@ -3,10 +3,7 @@ version: '3.4'
 services:
   todos:
     environment:
-      - ASPNETCORE_ENVIRONMENT=Development
-      - ServiceConfig__serviceDiscoveryAddress=http://consul:8500
-      - ServiceConfig__serviceName=todos
-      - ServiceConfig__serviceId=todos-v1
+      - ASPNETCORE_ENVIRONMENT=Docker
     ports:
       - "80"
 

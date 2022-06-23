@@ -12,33 +12,25 @@ namespace Infrastructure.ServiceDiscovery
         private readonly IConsulClient _client;
         private readonly ServiceConfig _config;
         private readonly IHostApplicationLifetime _lifetime;
-        private readonly IServer _server;
         private readonly string _registrationId;
         private readonly ILogger<ServiceDiscoveryHostedService> _logger;
 
         public ServiceDiscoveryHostedService(IConsulClient client, 
             ServiceConfig config, 
-            IServer server,
             ILogger<ServiceDiscoveryHostedService> logger,
             IHostApplicationLifetime lifetime)
         {
             _client = client;
             _config = config;
-            _server = server;
             _lifetime = lifetime;
             _logger = logger;
-            _registrationId = $"{_config.ServiceName}-{_config.ServiceId}";
-            _logger.LogCritical($"ServiceName - {_config.ServiceName}");
-            _logger.LogCritical($"ServiceDiscoveryAddress - {_config.ServiceDiscoveryAddress}");
-            _logger.LogCritical($"ServiceId - {_config.ServiceId}");
+            _registrationId = $"{_config.ServiceName}-{_config.ServiceId}-{Guid.NewGuid()}";
         }
 
         public Task StartAsync(CancellationToken cancellationToken)
         {
             _lifetime.ApplicationStarted.Register(async () =>
             {
-                _logger.LogInformation($"ADDRESS URL - {Dns.GetHostEntry(Dns.GetHostName()).AddressList[0].ToString()}");
-
                 var registration = new AgentServiceRegistration
                 {
                     ID = _registrationId,
