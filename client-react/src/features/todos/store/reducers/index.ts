@@ -1,3 +1,5 @@
-import * as todoModalsReducer from './todo-modals.reducer'
+import { todoModalsReducer } from './todo-modals.reducer'
 
-export { todoModalsReducer }
+const TodoFeatureReducers = { todoModalsReducer };
+
+export { TodoFeatureReducers }

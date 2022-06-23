@@ -1,6 +1,6 @@
 import { Button } from "@mui/material"
-import { useAppDispatch } from "@/app/hooks"
-import { TodosCollectionActions } from "@/store/actions"
+import { useAppDispatch } from "@app/hooks"
+import { TodosCollectionActions } from "@store/actions"
 import { Todo } from "@features/todos/models"
 import { TodoModalsActions } from "@features/todos/store/actions"
 import { push } from 'connected-react-router'

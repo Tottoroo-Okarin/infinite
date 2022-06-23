@@ -20,4 +20,4 @@ const todoModalsReducer = createReducer<State>(initialState, (builder) => {
       ({...state, isModalCardOpen: false, todoBeingEdited: undefined}))
 });
 
-export default todoModalsReducer;
+export { todoModalsReducer };

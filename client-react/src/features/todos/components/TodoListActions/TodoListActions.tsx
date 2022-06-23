@@ -1,7 +1,7 @@
 import { Button } from "@mui/material";
-import { useAppDispatch, useAppSelector } from "@/app/hooks";
+import { useAppDispatch, useAppSelector } from "@app/hooks";
 import { TodoModalsActions } from "@features/todos/store/actions";
-import { TodoSelectors } from "@/features/todos/store/selectors";
+import { TodoSelectors } from "@features/todos/store/selectors";
 import { TodoModal } from "@features/todos/components";
 
 

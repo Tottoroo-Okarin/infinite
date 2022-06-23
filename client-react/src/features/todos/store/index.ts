@@ -1,6 +1,6 @@
 import { combineReducers } from "@reduxjs/toolkit";
-import { todoModalsReducer } from "@features/todos/store/reducers";
+import { TodoFeatureReducers } from "@features/todos/store/reducers";
 
 export const todosReducer = combineReducers({
-    modal: todoModalsReducer
+    modal: TodoFeatureReducers.todoModalsReducer
 })

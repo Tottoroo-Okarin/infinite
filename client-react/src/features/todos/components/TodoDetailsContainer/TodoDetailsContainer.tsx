@@ -1,7 +1,7 @@
 import { Card } from "@mui/material"
 import { useParams } from "react-router-dom"
-import { useAppSelector } from "@/app/hooks"
-import { TodosCollectionSelectors } from "@/store/selectors"
+import { useAppSelector } from "@app/hooks"
+import { TodosCollectionSelectors } from "@store/selectors"
 import { Todo, User } from "@features/todos/models"
 import classNames from 'classnames/bind';
 import styles from './TodoDetailsContainer.module.scss' 
@@ -12,7 +12,7 @@ import {
   TodoDetailsDescription,
   TodoDetailsHeader,
 } from "@features/todos/components"
-import { Error } from "@/components"
+import { Error } from "@components/index"
 
 interface TodoDetailsContainerOptions {
   hasActions?: boolean,
