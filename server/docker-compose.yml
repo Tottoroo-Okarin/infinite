@@ -1,16 +1,15 @@
 version: '3.4'
 
 services:
-  db:
-    container_name: pg_container
+  todosdb:
+    container_name: pg_todos_container
     image: postgres
     restart: always
+    hostname: todoshost
     environment:
       POSTGRES_USER: todosuser
       POSTGRES_PASSWORD: todosuserpass
       POSTGRES_DB: todos
-    ports:
-      - "5432:5432"
     networks:
       - backend_network
       
@@ -23,17 +22,15 @@ services:
       PGADMIN_DEFAULT_PASSWORD: root
     ports:
       - "8080:8080"
-    networks:
-      - backend_network
 
   todos:
     image: todos:latest
     build:
       context: .
       dockerfile: Src/Services/TodosService/Dockerfile
-    container_name: todos
     depends_on:
       - consul
+      - todosdb
     networks:
       - backend_network
 
