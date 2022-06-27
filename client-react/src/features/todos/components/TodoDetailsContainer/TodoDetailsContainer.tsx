@@ -12,7 +12,7 @@ import {
   TodoDetailsDescription,
   TodoDetailsHeader,
 } from "@features/todos/components"
-import { Error } from "@components/index"
+import { Error } from "@components/Error"
 
 interface TodoDetailsContainerOptions {
   hasActions?: boolean,

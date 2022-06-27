@@ -1,13 +1,13 @@
-import { useAppDispatch, useAppSelector } from "../../../../app/hooks"
-import { TodosCollectionActions } from "../../../../store/actions"
-import { TodosCollectionSelectors } from "../../../../store/selectors"
+import { useAppDispatch, useAppSelector } from "@app/hooks"
+import { TodosCollectionActions } from "@store/actions"
+import { TodosCollectionSelectors } from "@store/selectors"
 import { 
   TodoList,
   TodoListActions,
   TodoModal
 } from "@features/todos/components"
 import { Box } from "@mui/system"
-import { TodoSelectors } from "../../store/selectors"
+import { TodoSelectors } from "@features/todos/store/selectors"
 
 interface TodoListContainerOptions {
   hasActions?: boolean,
