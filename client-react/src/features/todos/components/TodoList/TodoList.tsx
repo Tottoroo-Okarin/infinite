@@ -1,13 +1,9 @@
-import { Todo } from '../../models/todo.model';
-import { TodoAction } from '../../models/todo-action.model';
-import { TodoItem } from '../TodoItem/TodoItem';
-import { Box, Button } from '@mui/material';
-import { ActionTypes } from '@mui/base';
-import { TodoActions } from '../TodoActions/TodoActions';
-import { TodoModal } from '../TodoModal/TodoModal';
-import { useAppSelector } from '../../../../app/hooks';
-import { TodoSelectors } from '../../store/selector';
-
+import { Todo } from '@features/todos/models';
+import { 
+  TodoItem,
+  TodoActions
+} from '@features/todos/components';
+import { Box } from '@mui/material';
 interface TodoListProps {
   todos: Array<Todo>,
 }

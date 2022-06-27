@@ -1,4 +1,4 @@
-import { TodoDetailsContainer } from "../TodoDetailsContainer/TodoDetailsContainer"
+import { TodoDetailsContainer } from "@features/todos/components"
 
 export const TodoDetailsPage = () => {
   return (

@@ -1,5 +1,5 @@
 import { Box } from '@mui/system';
-import rick from '../../../../assets//rickroll.gif'
+import rick from '@assets/rickroll.gif'
 
 interface ErrorProps {
 	children?: React.ReactNode;

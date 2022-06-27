@@ -1,5 +1,5 @@
 import { Typography } from "@mui/material";
-import { Todo } from "../../models/todo.model";
+import { Todo } from "@features/todos/models";
 
 interface TodoDetailsDescription {
     todo?: Todo,

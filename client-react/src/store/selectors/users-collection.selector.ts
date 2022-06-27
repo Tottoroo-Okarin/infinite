@@ -1,6 +1,6 @@
-import { RootState } from "../../app/store";
-import { adapter } from "../reducers/users-collection.reducer";
+import { RootState } from "@app/store";
+import { usersCollectionAdapter } from "@store/reducers";
 
 
 
-export const {selectAll: getAllUsers, } = adapter.getSelectors<RootState>(state => state.data.users);
+export const {selectAll: getAllUsers, } = usersCollectionAdapter.getSelectors<RootState>(state => state.data.users);

@@ -1,12 +1,12 @@
 import { Button, Box, Modal, TextField, Typography } from "@mui/material"
 import { useForm } from "react-hook-form";
-import { useAppDispatch, useAppSelector } from "../../../../app/hooks";
-import { TodosCollectionActions } from "../../../../store/actions";
-import { TodoInputs } from "../../models/todo-inputs.model";
-import { TodoModalsActions } from "../../store/actions";
+import { useAppDispatch, useAppSelector } from "@app/hooks";
+import { TodosCollectionActions } from "@store/actions";
+import { TodoInputs } from "@features/todos/models";
+import { TodoModalsActions } from "@features/todos/store/actions";
 import { v4 as uuidv4 } from 'uuid';
 import styles from "./TodoModal.module.scss"
-import { TodoSelectors } from "../../store/selector";
+import { TodoSelectors } from "@features/todos/store/selectors";
 import { useEffect } from "react";
 import classNames from "classnames/bind";
 

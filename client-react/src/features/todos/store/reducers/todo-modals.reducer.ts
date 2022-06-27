@@ -1,6 +1,6 @@
 import { createReducer } from "@reduxjs/toolkit";
-import { Todo } from "../../models/todo.model";
-import { TodoModalsActions } from "../actions";
+import { Todo } from "@features/todos/models";
+import { TodoModalsActions } from "@features/todos/store/actions";
 
 interface State {
   isModalCardOpen: boolean,
@@ -20,4 +20,4 @@ const todoModalsReducer = createReducer<State>(initialState, (builder) => {
       ({...state, isModalCardOpen: false, todoBeingEdited: undefined}))
 });
 
-export default todoModalsReducer;
+export { todoModalsReducer };

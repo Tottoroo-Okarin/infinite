@@ -1,5 +1,5 @@
 import { createAction } from "@reduxjs/toolkit";
-import { Todo } from "../../features/todos/models/todo.model";
+import { Todo } from "@features/todos/models";
 
 
 const featureKey = '[Todos Collection]'
