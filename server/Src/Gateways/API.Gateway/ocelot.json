@@ -3,6 +3,7 @@
   "Routes": [
     {
       "ServiceName": "todos",
+      "SwaggerKey": "todos",
       "DownstreamPathTemplate": "/api/todos",
       "DownstreamScheme": "http",
       "UpstreamPathTemplate": "/api/todos",
@@ -10,6 +11,21 @@
       "LoadBalancerOptions": {
         "Type": "LeastConnection"
       }
+    }
+  ],
+  "SwaggerEndPoints": [
+    {
+      "Key": "todos",
+      "Config": [
+        {
+          "Name": "Todos API",
+          "Version": "v1",
+          "Service": {
+            "Name": "todos",
+            "Path": "/swagger/v1/swagger.json"
+          }
+        }
+      ]
     }
   ],
   "GlobalConfiguration": {

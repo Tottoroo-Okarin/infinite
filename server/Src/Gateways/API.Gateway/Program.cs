@@ -20,9 +20,13 @@ namespace API.Gateway
                         .AddJsonFile($"ocelot.{context.HostingEnvironment.EnvironmentName}.json", optional: true)
                         .AddEnvironmentVariables();
                 })
-                .ConfigureServices(services =>
+                .ConfigureServices((context, services) =>
                 {
+                    services.AddEndpointsApiExplorer();
+
                     services.AddOcelot().AddConsul();
+
+                    services.AddSwaggerForOcelot(context.Configuration);
                 })
                 .ConfigureLogging((context, logging) =>
                 {
@@ -30,7 +34,12 @@ namespace API.Gateway
                 })
                 .Configure(app =>
                 {
-                    app.UseOcelot().Wait();
+                    app.UseSwaggerForOcelotUI(options =>
+                    {
+                        options.PathToSwaggerGenerator = "/swagger/docs";
+                    })
+                    .UseOcelot()
+                    .Wait();
                 })
                 .Build()
                 .Run();
