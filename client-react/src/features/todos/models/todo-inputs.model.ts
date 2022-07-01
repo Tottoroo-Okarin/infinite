@@ -3,5 +3,6 @@ export interface TodoInputs {
     title: string,
     description: string,
     assigneeId: string,
+    statusId: number,
     estimate: number | null
 };

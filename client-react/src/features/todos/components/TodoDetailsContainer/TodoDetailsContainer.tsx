@@ -28,6 +28,7 @@ const testTodo: Todo = {
   title: 'Test title',
   description: 'Test description displayed here. Test description displayed here.',
   completed: false,
+  statusId: 2,
   estimate: 7,
   assigneeId: 'test-assignee-id',
   assignedById: 'test-assigned-by-id',

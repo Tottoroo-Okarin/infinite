@@ -12,6 +12,7 @@ import { TodoListActions } from './TodoListActions/TodoListActions'
 import { TodoListContainer } from './TodoListContainer/TodoListContainer'
 import { TodoListPage } from './TodoListPage/TodoListPage'
 import { TodoModal } from './TodoModal/TodoModal'
+import { TodoStatusColumn } from './TodoStatusColumn/TodoStatusColumn'
 
 export {
     TodoActions,
@@ -27,5 +28,6 @@ export {
     TodoListActions,
     TodoListContainer,
     TodoListPage,
-    TodoModal
+    TodoModal,
+    TodoStatusColumn
 } 

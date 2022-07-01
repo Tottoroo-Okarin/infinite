@@ -3,6 +3,7 @@ export interface Todo {
     description: string,
     id: string,
     completed: boolean,
+    statusId: number,
     estimate: number,
     assigneeId: string,
     assignedById: string,

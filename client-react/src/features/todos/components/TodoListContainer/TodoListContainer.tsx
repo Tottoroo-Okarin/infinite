@@ -8,6 +8,7 @@ import {
 } from "@features/todos/components"
 import { Box } from "@mui/system"
 import { TodoSelectors } from "@features/todos/store/selectors"
+import { TodoListColumnView } from "../TodoListColumnView/TodoListColumnView"
 
 interface TodoListContainerOptions {
   hasActions?: boolean,
@@ -29,10 +30,10 @@ export const TodoListContainer = ({containerOptions}: TodoListContainerProps) =>
     const completedTodosIds = todos.filter(todo => todo.completed).map(todo => todo.id)
     dispatch(TodosCollectionActions.removeMany({ ids: completedTodosIds }))
   }
-
+//<TodoList todos={todos}/>
   return (
     <Box>
-      <TodoList todos={todos}/>
+      <TodoListColumnView/>
       {(containerOptions.hasActions) && (
         <TodoListActions clearCompletedTodos={clearCompletedTodos}/>
       )}

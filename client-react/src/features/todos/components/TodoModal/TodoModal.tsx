@@ -1,9 +1,10 @@
-import { Button, Box, Modal, TextField, Typography } from "@mui/material"
+import { Button, Box, Modal, TextField, Typography, FormControl, InputLabel, Select, MenuItem } from "@mui/material"
 import { useForm } from "react-hook-form";
 import { useAppDispatch, useAppSelector } from "@app/hooks";
 import { TodosCollectionActions } from "@store/actions";
 import { TodoInputs } from "@features/todos/models";
 import { TodoModalsActions } from "@features/todos/store/actions";
+import { todoStatuses } from "@features/todos/constants/todo-statuses.const";
 import { v4 as uuidv4 } from 'uuid';
 import styles from "./TodoModal.module.scss"
 import { TodoSelectors } from "@features/todos/store/selectors";
@@ -20,6 +21,7 @@ const clearFormState: TodoInputs = {
   title: '',
   description: '',
   estimate: null,
+  statusId: 0,
   assigneeId: ''
 }
 
@@ -51,7 +53,7 @@ export const TodoModal = ({isOpen}: TodoModalProps) => {
   })
 
   const todoBeingEdited = useAppSelector(TodoSelectors.todoBeingEdited)
-  const { register, handleSubmit, reset, formState: { errors } } = useForm<TodoInputs>();
+  const { register, handleSubmit, reset, formState: { errors } } = useForm<TodoInputs>()
   const dispatch = useAppDispatch()
 
   useEffect(() => {
@@ -62,10 +64,10 @@ export const TodoModal = ({isOpen}: TodoModalProps) => {
     dispatch(TodoModalsActions.closeTodoModal())
   } 
   
-  const addTodo = (title: string, description: string, estimate: number, assigneeId: string) => {
+  const addTodo = (title: string, description: string, estimate: number, assigneeId: string, statusId: number) => {
     dispatch(TodosCollectionActions.add(
       { id: uuidv4(), title, description,
-        completed: false, estimate, assignedById: 'My id', assigneeId,
+        completed: false, statusId, estimate, assignedById: 'My id', assigneeId,
         assignedOn: 'Monday, April 23rd, 2022',  lastUpdatedOn: 'now', comments: []
       }))
     closeModal();
@@ -77,7 +79,7 @@ export const TodoModal = ({isOpen}: TodoModalProps) => {
   }
   
   const handleAddTodo = (data: TodoInputs) => {
-    addTodo(data.title, data.description, +data.estimate!, data.assigneeId);
+    addTodo(data.title, data.description, +data.estimate!, data.assigneeId, +data.statusId);
   }
 
   const handleEditTodo = (data: TodoInputs) => {
@@ -130,6 +132,30 @@ export const TodoModal = ({isOpen}: TodoModalProps) => {
               {...register("assigneeId", { required: true })}
             />
             {errors.title && <span className={validationStyles}>This field is required</span>}
+            <FormControl>
+              <InputLabel>Status</InputLabel>
+              <Select
+                className={textFieldStyles}
+                labelId="label"
+                {...register("statusId")}
+              >
+                {
+                  (todoStatuses.length === 0) &&
+                    <MenuItem>
+                      No data available
+                    </MenuItem>
+                }
+                {
+                  todoStatuses.map(status => {
+                    return(
+                      <MenuItem value={status.id}>
+                        {status.title}
+                      </MenuItem>
+                    )
+                  })
+                }
+            </Select>
+            </FormControl>
             <div>
               <Button type="submit">
                 {submitButtonTitle}

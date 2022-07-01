@@ -17,7 +17,16 @@ export const TodoActions = ({todo}: TodoActionsProps) => {
   }
 
   const toggleTodo = ({id, completed}: Todo) => {
-    dispatch(TodosCollectionActions.updateSingle({ id: id, todo: {completed: !completed} }))
+    /*{
+      title: 'Done',
+      id: 5
+    },
+    {
+      title: 'In Progress',
+      id: 2
+    },*/
+    const statusId = completed ?  5 : 2
+    dispatch(TodosCollectionActions.updateSingle({ id: id, todo: {completed: !completed, statusId} }))
   }
 
   const openTodoDetailsPage = (id: string) => {
